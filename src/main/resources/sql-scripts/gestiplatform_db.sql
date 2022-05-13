@@ -48,7 +48,7 @@ CREATE TABLE personas(
 	nombre VARCHAR(30) DEFAULT NULL,
     clave VARCHAR(60) DEFAULT NULL,
 	telefono VARCHAR(20) DEFAULT NULL,
-	es_admin BOOLEAN DEFAULT 0
+	admin BOOLEAN DEFAULT 0
 ) ENGINE=InnoDB;
 
 CREATE TABLE grupos(
@@ -70,7 +70,7 @@ CREATE TABLE recibos(
     cobrado BOOLEAN DEFAULT 0,
     importe DOUBLE DEFAULT NULL
 ) ENGINE=InnoDB;
-INSERT INTO personas(correo, nombre, clave, telefono, es_admin) VALUES
+INSERT INTO personas(correo, nombre, clave, telefono, admin) VALUES
 ('admin@gmail.com', 'Admin', '12345', '096541789', 1);
 
 INSERT INTO personas(correo, nombre, clave, telefono) VALUES
