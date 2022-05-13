@@ -41,7 +41,6 @@ CREATE TABLE suscripciones(
     credenciales_clave VARCHAR(60) DEFAULT NULL
 ) ENGINE=InnoDB;
 
-/*Esta sería nuestra tabla de "usuarios"*/
 CREATE TABLE personas(
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	correo VARCHAR(60) UNIQUE DEFAULT NULL,

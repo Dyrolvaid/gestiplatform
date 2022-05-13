@@ -1,19 +1,21 @@
 package com.inserta.gestiplatform.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
-    @RequestMapping("/index")
-    public String index(){
-        return "index";
+    @GetMapping("/")
+    public String index(HttpSession session){
+        if (session.isNew()){
+            return "login";
+        } else {
+            return "index";
+        }
     }
-    @RequestMapping("/login")
-    public String login(){
-        return "login";
-    }
-    @RequestMapping("/json")
+    @GetMapping("/json")
     public String json(){
         return "json";
     }
