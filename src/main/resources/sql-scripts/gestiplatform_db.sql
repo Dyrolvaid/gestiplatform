@@ -4,7 +4,7 @@ USE gestiplatform_db;
 
 CREATE TABLE plataformas(
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(30) DEFAULT NULL,
+    nombre VARCHAR(30) UNIQUE DEFAULT NULL,
     url_general VARCHAR(255) DEFAULT NULL,
     url_admin VARCHAR(255) DEFAULT NULL,
     logo VARCHAR(50) DEFAULT NULL,
@@ -38,17 +38,17 @@ CREATE TABLE suscripciones(
     fecha_alta DATE DEFAULT NULL,
     fecha_proximo_cobro DATE DEFAULT NULL,
     precio DOUBLE DEFAULT NULL,
-    credenciales_correo VARCHAR(60) DEFAULT NULL,
+    credenciales_correo VARCHAR(60) UNIQUE DEFAULT NULL,
     credenciales_clave VARCHAR(60) DEFAULT NULL
 ) ENGINE=InnoDB;
 
 /*Esta sería nuestra tabla de "usuarios"*/
 CREATE TABLE personas(
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	correo VARCHAR(60) DEFAULT NULL,
-	nombre VARCHAR(30) DEFAULT NULL,
+	correo VARCHAR(60) UNIQUE DEFAULT NULL,
+	nombre VARCHAR(30) UNIQUE DEFAULT NULL,
     clave VARCHAR(60) DEFAULT NULL,
-	telefono VARCHAR(20) DEFAULT NULL
+	telefono VARCHAR(20) UNIQUE DEFAULT NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE grupos(
@@ -78,4 +78,52 @@ INSERT INTO personas(correo, nombre, clave, telefono) VALUES
 ('rafa@bizkaia.eu','Rafa', 'EDCBA','660986482'),
 ('manolo@hotmail.com', 'Manolo', 'A1B2C3','+346604850328'),
 ('salva@gmail.com', 'Salva', '3C2B1A','+34656565656'),
-('martina@yahoo.com', 'Martina', '?.#-AaB4','+34656565656');
+('martina@yahoo.com', 'Martina', '?.#-AaB4','+34656565653');
+
+INSERT INTO plataformas(nombre, url_general, url_admin, logo, fecha_alta, limite_perfiles, limite_reproducciones, color) VALUES
+('Netflix', 'www.netflix.com', 'www.netflix.com/es/login', 'img/netflix.png', '2022-05-12', '5', '4', '#ff0000'),
+('HBO', 'www.hbomax.com', 'play.hbomax.com/login', 'img/hbo.png', '2022-05-01', '5', '2', '#000000'),
+('Disney+', 'www.disneyplus.com', 'www.disneyplus.com/login', 'img/disney.png', '2022-01-01', '4', '4', '#ffffff'),
+('Spotify', 'www.spotify.com', 'www.spotify.com/login', 'img/spotify.png', '2021-06-06', '2', '2','#0dff00');
+
+INSERT INTO periodicidad(tipo, descripcion) VALUES
+('Mensual','Cada mes.'),
+('Anual', 'Cada año'),
+('Bimensual', 'Cada dos meses.'),
+('Trimensual', 'Cada tres meses.'),
+('Semestral', 'Cada seis meses.');
+
+INSERT INTO formas_pago(descripcion, favorita) VALUES
+('División equitativa entre todos los miembros del grupo.', 1),
+('Por turnos.', 1),
+('No equitativa; a merced del administrador.', 0);
+
+INSERT INTO suscripciones(id_plataforma, id_periodicidad, id_forma_de_pago, descripcion, fecha_alta, fecha_proximo_cobro, precio, credenciales_correo, credenciales_clave) VALUES
+(4, 3, 1, 'Música.','2021-06-07','2022-08-07', 9.99,'ohio@mail.com','12345'),
+(2, 2, 3, 'Cine y series.','2020-09-03','2022-09-03', 30.60,'mymail@not.com','54321'),
+(3, 1, 1, 'Cine, series y animación.','2022-03-01','2023-04-01', 7.77,'somebodysmail@maybe.es','ABCDE'),
+(1, 5, 2, 'Películas, series y juegos.','2022-04-01','2022-10-01', 53.70,'trabajo@yahoo.nz','EDCBA'),
+(4, 4, 2, 'Música y red social.','2020-03-26','2022-06-26', 39.4,'goonies@go.grom','A2B4C6');
+
+INSERT INTO grupos(id_persona, id_suscripcion) VALUES
+(1, 4),
+(2, 3),
+(6, 4),
+(5, 1),
+(3, 4),
+(4, 2),
+(7, 3);
+
+INSERT INTO recibos(id_grupo, fecha_emision, fecha_cobro, vigencia_inicio, vigencia_fin, cobrado, importe) VALUES
+(1, '2022-03-02', '2022-04-02', '2022-03-22', '2022-05-17', 1, 4.4),
+(1, '2021-07-19', '2023-11-03', '2024-07-20', '2025-03-19', 0, 50.50),
+(2,'2022-05-21','2022-05-31', '2022-07-18', '2022-12-21', 0, 180.40),
+(2, '2022-06-06', '2022-07-19','2022-07-31','2022-12-05', 1, 20.0),
+(3,'2022-07-15','2022-09-13','2022-09-14','2022-10-17', 0, 31.0),
+(3, '2022-05-29','2022-07-23','2022-08-07','2022-12-08', 1, 5.5),
+(3,'2022-05-31','2022-07-06','2022-10-24','2022-12-05', 1, 8.8),
+(4,'2022-05-20','2022-07-02','2022-10-09','2022-11-16', 0, 0.50),
+(5,'2022-05-27','2022-08-11','2022-11-04','2022-12-16', 0, 4.9),
+(6,'2022-07-19','2022-08-12','2022-08-22','2022-11-04', 1, 7.7),
+(7,'2022-05-13','2022-06-26','2022-11-27','2022-12-14', 1, 9.93),
+(6,'2022-07-06','2022-08-04','2022-10-20','2022-11-30', 1, 17.5);
