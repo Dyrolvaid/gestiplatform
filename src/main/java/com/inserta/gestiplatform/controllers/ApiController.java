@@ -1,7 +1,9 @@
 package com.inserta.gestiplatform.controllers;
 
+import com.inserta.gestiplatform.models.Periodicidad;
 import com.inserta.gestiplatform.models.Persona;
 import com.inserta.gestiplatform.models.Plataforma;
+import com.inserta.gestiplatform.repositories.PeriodicidadesRepo;
 import com.inserta.gestiplatform.repositories.PersonasRepo;
 import com.inserta.gestiplatform.repositories.PlataformasRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ public class ApiController {
     PlataformasRepo plataformasRepo;
     @Autowired
     PersonasRepo personasRepo;
+    @Autowired
+    PeriodicidadesRepo periodicidadesRepo;
     @GetMapping("/plataformas")
     public List<Plataforma> plataformas(){
         return plataformasRepo.findAll();
@@ -25,5 +29,9 @@ public class ApiController {
     @GetMapping("/personas")
     public List<Persona> personas(){
         return personasRepo.findAll();
+    }
+    @GetMapping("/periodicidades")
+    public List<Periodicidad> periodicidades(){
+        return periodicidadesRepo.findAll();
     }
 }

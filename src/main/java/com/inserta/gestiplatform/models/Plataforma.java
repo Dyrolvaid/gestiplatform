@@ -12,7 +12,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "plataformas")
 public class Plataforma {
-    //Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
