@@ -24,6 +24,8 @@ public class ApiController {
     FormasDePagoRepo formasDePagoRepo;
     @Autowired
     SuscripcionesRepo suscripcionesRepo;
+    @Autowired
+    RecibosRepo recibosRepo;
     @GetMapping("/plataformas")
     public List<Plataforma> plataformas(){
         return plataformasRepo.findAll();
@@ -47,5 +49,9 @@ public class ApiController {
     @GetMapping("/suscripciones")
     public List<Suscripcion> suscripciones(){
         return suscripcionesRepo.findAll();
+    }
+    @GetMapping("/recibos")
+    public List<Recibo> recibos(){
+        return recibosRepo.findAll();
     }
 }

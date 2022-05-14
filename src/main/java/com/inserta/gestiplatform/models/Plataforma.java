@@ -1,5 +1,6 @@
 package com.inserta.gestiplatform.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,7 @@ public class Plataforma {
     private int limitePerfiles;
     private int limiteReproducciones;
     private String color;
+    @JsonManagedReference
     @OneToMany(mappedBy = "plataforma")
     private List<Suscripcion> suscripciones;
 }

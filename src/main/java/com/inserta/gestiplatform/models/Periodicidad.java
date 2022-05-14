@@ -1,5 +1,6 @@
 package com.inserta.gestiplatform.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,7 @@ public class Periodicidad {
     private int id;
     private String tipo;
     private String descripcion;
+    @JsonManagedReference
     @OneToMany(mappedBy = "periodicidad")
     private List<Suscripcion> suscripciones;
 }
