@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -22,4 +23,6 @@ public class Plataforma {
     private int limitePerfiles;
     private int limiteReproducciones;
     private String color;
+    @OneToMany(mappedBy = "plataforma")
+    private List<Suscripcion> suscripciones;
 }

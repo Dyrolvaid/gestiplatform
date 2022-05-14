@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -17,5 +18,6 @@ public class FormaDePago {
     private int id;
     private String descripcion;
     private boolean favorita;
-
+    @OneToMany(mappedBy = "formaDePago")
+    private List<Suscripcion> suscripciones;
 }

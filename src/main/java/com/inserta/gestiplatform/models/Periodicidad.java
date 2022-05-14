@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -17,4 +18,6 @@ public class Periodicidad {
     private int id;
     private String tipo;
     private String descripcion;
+    @OneToMany(mappedBy = "periodicidad")
+    private List<Suscripcion> suscripciones;
 }
