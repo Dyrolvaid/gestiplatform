@@ -10,16 +10,12 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "plataformas")
-public class Plataforma {
+@Table(name = "formas_pago")
+public class FormaDePago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String nombre;
-    private String urlGeneral;
-    private String urlAdmin;
-    private String logo;
-    private int limitePerfiles;
-    private int limiteReproducciones;
-    private String color;
+    private String descripcion;
+    private boolean favorita;
+
 }
