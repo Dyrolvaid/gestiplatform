@@ -1,7 +1,6 @@
 package com.inserta.gestiplatform.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,15 +17,15 @@ public class Grupo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @JsonBackReference
+    @JsonIgnoreProperties("grupos")
     @ManyToOne
     @JoinColumn(name = "id_persona",referencedColumnName = "id")
     private Persona persona;
-    @JsonBackReference
+    @JsonIgnoreProperties("grupos")
     @ManyToOne
     @JoinColumn(name = "id_suscripcion",referencedColumnName = "id")
     private Suscripcion suscripcion;
-    @JsonManagedReference
+    @JsonIgnoreProperties("grupo")
     @OneToMany(mappedBy = "grupo")
     private List<Recibo> recibos;
 }

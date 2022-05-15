@@ -1,6 +1,6 @@
 package com.inserta.gestiplatform.models;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,7 +22,7 @@ public class Persona {
     private String clave;
     private String telefono;
     private boolean admin;
-    @JsonManagedReference
+    @JsonIgnoreProperties("persona")
     @OneToMany(mappedBy = "persona")
     private List<Grupo> grupos;
 }

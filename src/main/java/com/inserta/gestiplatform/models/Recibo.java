@@ -1,6 +1,6 @@
 package com.inserta.gestiplatform.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +17,7 @@ public class Recibo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @JsonBackReference
+    @JsonIgnoreProperties("recibos")
     @ManyToOne
     @JoinColumn(name = "id_grupo", referencedColumnName = "id")
     private Grupo grupo;

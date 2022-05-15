@@ -1,12 +1,10 @@
 package com.inserta.gestiplatform.models;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -19,7 +17,7 @@ public class FormaDePago {
     private int id;
     private String descripcion;
     private boolean favorita;
-    @JsonManagedReference
-    @OneToMany(mappedBy = "formaDePago")
-    private List<Suscripcion> suscripciones;
+//    @JsonIgnoreProperties("formaDePago")
+//    @OneToMany(mappedBy = "formaDePago")
+//    private List<Suscripcion> suscripciones;
 }
