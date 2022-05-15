@@ -10,13 +10,17 @@ public class HomeController {
     @GetMapping("/")
     public String index(HttpSession session){
         if (session.isNew()){
-            return "login";
-        } else {
             return "index";
+        } else {
+            return "login";
         }
     }
     @GetMapping("/json")
-    public String json(){
-        return "json";
+    public String json(HttpSession session){
+        if(session.getAttribute("usuarioActivo") != null){
+            return "json";
+        } else {
+            return "login";
+        }
     }
 }
