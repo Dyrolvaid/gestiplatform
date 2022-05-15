@@ -9,8 +9,36 @@
 </head>
 <body>
     <p th:text="${'Logueado con: ' + session.usuarioActivo.getNombre()}"></p>
-    <a class="btn btn-outline-primary" th:href="${'/json'}">JSON</a>
-    <a class="btn btn-outline-danger" th:href="${'/logout'}">Cerrar Sesión</a>
+    <div class="container-fluid">
+        <div class="row m-5">
+            <div class="col-md-3  "></div>
+            <div class="col-md-6 border rounded shadow p-3 mx-auto">
+                <div class="row">
+                    <div class="col">
+<!--                        <img th:src="@{'#'}" class="img-fluid" alt="Logo Gestiplatform">-->
+                    </div>
+                    <div class="col">
+                        <span>Gestiplatform</span>
+                    </div>
+                </div>
+                <div class="row mt-5 ">
+                    <div class="col text-center ">
+                        <a class="btn btn-outline-primary" th:href="${'/json'}">JSON</a>
+                    </div>
+                    <div class="col text-center">
+                        <a class="btn btn-outline-danger" th:href="${'/logout'}">Cerrar Sesión</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <footer class="text-center text-light bg-dark p-3 fixed-bottom ">
+            <div>
+                © 2022 Copyright:
+                <a class=" p-3" th:href="${'/'}" target="_blank">Gestiplatform.com</a>
+            </div>
+        </footer>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

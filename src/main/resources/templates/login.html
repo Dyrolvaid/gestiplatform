@@ -8,13 +8,42 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"/>
 </head>
 <body>
-    <form action="/login" method="post">
-        <label for="correo">Correo Electrónico</label>
-        <input type="email" name="correo" id="correo">
-        <label for="clave">Contraseña</label>
-        <input type="password" name="clave" id="clave">
-        <button class="btn btn-outline-primary" type="submit">Iniciar Sesión</button>
-    </form>
+    <div class="container-fluid mt-5">
+        <div class="row ">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 border rounded shadow p-5">
+                <div class="row pb-3">
+                    <div class="col">
+<!--                        <img th:src="@{'#'}" class="img-fluid" alt="Logo Gestiplatform">-->
+                    </div>
+                    <div class="col">
+                        <span class="float-end h3">Gestiplatform</span>
+                    </div>
+                </div>
+                <div class="row p-2">
+                    <form action="/login" method="post">
+                        <div class="mb-3">
+                            <label for="correo" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" placeholder="Correo Electrónico" name="correo" id="correo">
+                        </div>
+                        <div class="mb-3">
+                            <label for="clave" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" placeholder="Contraseña" name="clave" id="clave">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <footer class="text-center text-light bg-dark p-3 fixed-bottom ">
+            <div>
+                © 2022 Copyright:
+                <a class=" p-3" th:href="${'/'}" target="_blank">Gestiplatform.com</a>
+
+            </div>
+        </footer>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
