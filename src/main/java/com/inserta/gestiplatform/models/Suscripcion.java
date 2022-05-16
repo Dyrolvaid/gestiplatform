@@ -1,6 +1,5 @@
 package com.inserta.gestiplatform.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,18 +16,18 @@ public class Suscripcion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @JsonIgnoreProperties("suscripciones")
-    @ManyToOne
-    @JoinColumn(name = "id_plataforma", referencedColumnName = "id")
-    private Plataforma plataforma;
-    @JsonIgnoreProperties("suscripciones")
-    @ManyToOne
-    @JoinColumn(name = "id_periodicidad", referencedColumnName = "id")
-    private Periodicidad periodicidad;
-    @JsonIgnoreProperties("suscripciones")
-    @ManyToOne
-    @JoinColumn(name = "id_forma_de_pago", referencedColumnName = "id")
-    private FormaDePago formaDePago;
+//    @JsonIgnoreProperties("suscripciones")
+//    @ManyToOne
+//    @JoinColumn(name = "id_plataforma", referencedColumnName = "id")
+//    private Plataforma plataforma;
+//    @JsonIgnoreProperties("suscripciones")
+//    @ManyToOne
+//    @JoinColumn(name = "id_periodicidad", referencedColumnName = "id")
+//    private Periodicidad periodicidad;
+//    @JsonIgnoreProperties("suscripciones")
+//    @ManyToOne
+//    @JoinColumn(name = "id_forma_de_pago", referencedColumnName = "id")
+//    private FormaDePago formaDePago;
     private String descripcion;
     private LocalDate fechaAlta;
     private LocalDate fechaProximoCobro;

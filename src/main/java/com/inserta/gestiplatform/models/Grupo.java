@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -25,7 +24,7 @@ public class Grupo {
     @ManyToOne
     @JoinColumn(name = "id_suscripcion",referencedColumnName = "id")
     private Suscripcion suscripcion;
-    @JsonIgnoreProperties("grupo")
-    @OneToMany(mappedBy = "grupo")
-    private List<Recibo> recibos;
+//    @JsonIgnoreProperties("grupo")
+//    @OneToMany(mappedBy = "grupo")
+//    private List<Recibo> recibos;
 }

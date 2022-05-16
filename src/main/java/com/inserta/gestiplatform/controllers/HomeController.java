@@ -10,9 +10,9 @@ public class HomeController {
     @GetMapping("/")
     public String index(HttpSession session){
         if (session.isNew()){
-            return "index";
-        } else {
             return "login";
+        } else {
+            return "index";
         }
     }
     @GetMapping("/json")

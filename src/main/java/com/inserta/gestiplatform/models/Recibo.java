@@ -1,6 +1,5 @@
 package com.inserta.gestiplatform.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,10 +16,10 @@ public class Recibo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @JsonIgnoreProperties("recibos")
-    @ManyToOne
-    @JoinColumn(name = "id_grupo", referencedColumnName = "id")
-    private Grupo grupo;
+//    @JsonIgnoreProperties("recibos")
+//    @ManyToOne
+//    @JoinColumn(name = "id_grupo", referencedColumnName = "id")
+//    private Grupo grupo;
     private LocalDate fechaEmision;
     private LocalDate fechaCobro;
     private LocalDate vigenciaInicio;
