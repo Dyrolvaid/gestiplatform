@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"/>
 </head>
 <body>
-    <p th:if="${session.usuarioActivo}" th:text="${'Logueado con: ' + session.usuarioActivo.getNombre()}"></p>
+
+<!--    <div th:if="${session.usuarioActivo}" class="alert alert-success">-->
+<!--        <span>Logueado correctamente</span>-->
+<!--    </div>-->
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
@@ -42,9 +45,14 @@
                         <li class="nav-item">
                             <a class="nav-link" target="_blank" th:href="${'/api/recibos'}">Recibos</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="${'/logout'}">Cerrar Sesión</a>
-                        </li>
+                        <div class="float-end">
+                            <li class="nav-item">
+                                <p class="nav-link" th:if="${session.usuarioActivo}" th:text="${'Bienvenido, ' + session.usuarioActivo.getNombre()}"></p>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="${'/logout'}">Cerrar Sesión</a>
+                            </li>
+                        </div>
                     </ul>
                 </div>
             </div>
