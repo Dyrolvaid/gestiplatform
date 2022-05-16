@@ -15,12 +15,4 @@ public class HomeController {
             return "index";
         }
     }
-    @GetMapping("/json")
-    public String json(HttpSession session){
-        if(session.getAttribute("usuarioActivo") != null){
-            return "json";
-        } else {
-            return "login";
-        }
-    }
 }

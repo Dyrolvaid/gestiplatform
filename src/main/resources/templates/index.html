@@ -10,28 +10,46 @@
 <body>
     <p th:if="${session.usuarioActivo}" th:text="${'Logueado con: ' + session.usuarioActivo.getNombre()}"></p>
     <div class="container-fluid">
-        <div class="row m-5">
-            <div class="col-md-3  "></div>
-            <div class="col-md-6 border rounded shadow p-3 mx-auto">
-                <div class="row">
-                    <div class="col">
-                        <img th:src="@{'/img/logo.png'}" class="img-fluid" alt="Logo Gestiplatform">
-                    </div>
-<!--                    <div class="col">-->
-<!--                        <span>Gestiplatform</span>-->
-<!--                    </div>-->
-                </div>
-                <div class="row mt-5 ">
-                    <div class="col text-center ">
-                        <a class="btn btn-outline-primary" th:href="${'/json'}">JSON</a>
-                    </div>
-                    <div class="col text-center">
-                        <a class="btn btn-outline-danger" th:href="${'/logout'}">Cerrar Sesión</a>
-                    </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img th:src="@{'/img/logo.png'}" class="img-fluid" alt="Logo Gestiplatform" width="130rem">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link " target="_blank" th:href="${'/api/plataformas'}">Plataformas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " target="_blank" th:href="${'/api/personas'}">Personas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" target="_blank" th:href="${'/api/periodicidades'}">Periodicidades</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " target="_blank" th:href="${'/api/grupos'}">Grupos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" target="_blank" th:href="${'/api/formasdepago'}">Formas de Pago</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" target="_blank" th:href="${'/api/suscripciones'}">Suscripciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" target="_blank" th:href="${'/api/recibos'}">Recibos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="${'/logout'}">Cerrar Sesión</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="col-md-3"></div>
-        </div>
+        </nav>
+
         <footer class="text-center text-light bg-dark p-3 fixed-bottom ">
             <div>
                 © 2022 Copyright:
