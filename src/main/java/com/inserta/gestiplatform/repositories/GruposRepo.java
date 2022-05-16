@@ -6,6 +6,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@RepositoryRestResource(path = "grupos")
+@RepositoryRestResource(path = "grupos", collectionResourceRel = "grupos")
 public interface GruposRepo extends JpaRepository <Grupo, Integer>{
 }

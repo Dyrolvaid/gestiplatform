@@ -6,7 +6,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@RepositoryRestResource(path = "personas")
+@RepositoryRestResource(path = "personas", collectionResourceRel = "personas")
 public interface PersonasRepo extends JpaRepository<Persona, Integer> {
     Persona findByCorreoAndClave(String correo, String clave);
 }

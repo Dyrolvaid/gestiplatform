@@ -16,11 +16,11 @@ public class Grupo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @JsonIgnoreProperties("grupos")
+//    @JsonIgnoreProperties("grupos")
     @ManyToOne
     @JoinColumn(name = "id_persona",referencedColumnName = "id")
     private Persona persona;
-    @JsonIgnoreProperties("grupos")
+//    @JsonIgnoreProperties("grupos")
     @ManyToOne
     @JoinColumn(name = "id_suscripcion",referencedColumnName = "id")
     private Suscripcion suscripcion;

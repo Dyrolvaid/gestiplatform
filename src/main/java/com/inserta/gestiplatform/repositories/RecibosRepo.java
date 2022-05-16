@@ -6,6 +6,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@RepositoryRestResource(path = "recibos")
+@RepositoryRestResource(path = "recibos", collectionResourceRel = "recibos")
 public interface RecibosRepo extends JpaRepository<Recibo, Integer> {
 }

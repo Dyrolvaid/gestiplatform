@@ -6,6 +6,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@RepositoryRestResource(path = "suscripciones")
+@RepositoryRestResource(path = "suscripciones", collectionResourceRel = "suscripciones")
 public interface SuscripcionesRepo extends JpaRepository<Suscripcion, Integer> {
 }

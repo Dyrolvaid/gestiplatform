@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"/>
 </head>
 <body>
-    <p th:text="${'Logueado con: ' + session.usuarioActivo.getNombre()}"></p>
+    <p th:if="${session.usuarioActivo}" th:text="${'Logueado con: ' + session.usuarioActivo.getNombre()}"></p>
     <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                    <img th:if="${session.usuarioActivo}" th:src="@{/imagenes/logo.png}" class="img-fluid" alt="Logo Gestiplatform">
+                    <img th:src="@{'/img/logo.png'}" class="img-fluid" alt="Logo Gestiplatform" width="130rem">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

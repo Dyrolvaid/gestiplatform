@@ -28,6 +28,9 @@ public class Suscripcion {
 //    @ManyToOne
 //    @JoinColumn(name = "id_forma_de_pago", referencedColumnName = "id")
 //    private FormaDePago formaDePago;
+    private int idPlataforma;
+    private int idPeriodicidad;
+    private int idFormaDePago;
     private String descripcion;
     private LocalDate fechaAlta;
     private LocalDate fechaProximoCobro;

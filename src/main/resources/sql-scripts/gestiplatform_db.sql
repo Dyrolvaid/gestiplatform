@@ -99,11 +99,11 @@ INSERT INTO formas_pago(descripcion, favorita) VALUES
 ('Con Tarjeta', 0);
 
 INSERT INTO suscripciones(id_plataforma, id_periodicidad, id_forma_de_pago, descripcion, fecha_alta, fecha_proximo_cobro, precio, credenciales_correo, credenciales_clave) VALUES
-(4, 3, 1, 'Música.','2021-06-07','2022-08-07', 9.99,'ohio@mail.com','12345'),
-(2, 2, 3, 'Cine y series.','2020-09-03','2022-09-03', 30.60,'mymail@not.com','54321'),
-(3, 1, 1, 'Cine, series y animación.','2022-03-01','2023-04-01', 7.77,'somebodysmail@maybe.es','ABCDE'),
-(1, 5, 2, 'Películas, series y juegos.','2022-04-01','2022-10-01', 53.70,'trabajo@yahoo.nz','EDCBA'),
-(4, 4, 2, 'Música y red social.','2020-03-26','2022-06-26', 39.4,'goonies@go.grom','A2B4C6');
+(4, 3, 1, 'Spotify con la familia','2021-06-07','2022-08-07', 9.99,'ohio@mail.com','12345'),
+(2, 2, 3, 'Cine y series','2020-09-03','2022-09-03', 30.60,'mymail@not.com','54321'),
+(3, 1, 1, 'Cine, series y animación','2022-03-01','2023-04-01', 7.77,'somebodysmail@maybe.es','ABCDE'),
+(1, 5, 2, 'Películas, series y juegos','2022-04-01','2022-10-01', 53.70,'trabajo@yahoo.nz','EDCBA'),
+(4, 4, 2, 'Spotify con los colegas internacionales','2020-03-26','2022-06-26', 39.4,'goonies@go.grom','A2B4C6');
 
 INSERT INTO grupos(id_persona, id_suscripcion) VALUES
 (1, 4),
