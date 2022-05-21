@@ -17,7 +17,9 @@ public class FormaDePago {
     private int id;
     private String descripcion;
     private boolean favorita;
-//    @JsonIgnoreProperties("formaDePago")
-//    @OneToMany(mappedBy = "formaDePago")
-//    private List<Suscripcion> suscripciones;
+    /*
+    @JsonIgnoreProperties("formaDePago")
+    @OneToMany(mappedBy = "formaDePago")
+    private List<Suscripcion> suscripciones;
+    */
 }

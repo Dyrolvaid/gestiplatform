@@ -22,7 +22,9 @@ public class Plataforma {
     private int limitePerfiles;
     private int limiteReproducciones;
     private String color;
-//    @JsonIgnoreProperties("plataforma")
-//    @OneToMany(mappedBy = "plataforma")
-//    private List<Suscripcion> suscripciones;
+    /*
+    @JsonIgnoreProperties("plataforma")
+    @OneToMany(mappedBy = "plataforma")
+    private List<Suscripcion> suscripciones;
+    */
 }

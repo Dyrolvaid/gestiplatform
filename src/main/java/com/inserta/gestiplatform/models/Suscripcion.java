@@ -16,18 +16,20 @@ public class Suscripcion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-//    @JsonIgnoreProperties("suscripciones")
-//    @ManyToOne
-//    @JoinColumn(name = "id_plataforma", referencedColumnName = "id")
-//    private Plataforma plataforma;
-//    @JsonIgnoreProperties("suscripciones")
-//    @ManyToOne
-//    @JoinColumn(name = "id_periodicidad", referencedColumnName = "id")
-//    private Periodicidad periodicidad;
-//    @JsonIgnoreProperties("suscripciones")
-//    @ManyToOne
-//    @JoinColumn(name = "id_forma_de_pago", referencedColumnName = "id")
-//    private FormaDePago formaDePago;
+    /*
+    @JsonIgnoreProperties("suscripciones")
+    @ManyToOne
+    @JoinColumn(name = "id_plataforma", referencedColumnName = "id")
+    private Plataforma plataforma;
+    @JsonIgnoreProperties("suscripciones")
+    @ManyToOne
+    @JoinColumn(name = "id_periodicidad", referencedColumnName = "id")
+    private Periodicidad periodicidad;
+    @JsonIgnoreProperties("suscripciones")
+    @ManyToOne
+    @JoinColumn(name = "id_forma_de_pago", referencedColumnName = "id")
+    private FormaDePago formaDePago;
+    */
     private int idPlataforma;
     private int idPeriodicidad;
     private int idFormaDePago;
@@ -37,7 +39,9 @@ public class Suscripcion {
     private double precio;
     private String credencialesCorreo;
     private String credencialesClave;
-//    @JsonIgnoreProperties("suscripcion")
-//    @OneToMany(mappedBy = "suscripcion")
-//    private List<Grupo> grupos;
+    /*
+    @JsonIgnoreProperties("suscripcion")
+    @OneToMany(mappedBy = "suscripcion")
+    private List<Grupo> grupos;
+    */
 }

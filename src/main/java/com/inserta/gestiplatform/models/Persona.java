@@ -20,7 +20,9 @@ public class Persona {
     private String clave;
     private String telefono;
     private boolean admin;
-//    @JsonIgnoreProperties("persona")
-//    @OneToMany(mappedBy = "persona")
-//    private List<Grupo> grupos;
+    /*
+    @JsonIgnoreProperties("persona")
+    @OneToMany(mappedBy = "persona")
+    private List<Grupo> grupos;
+    */
 }

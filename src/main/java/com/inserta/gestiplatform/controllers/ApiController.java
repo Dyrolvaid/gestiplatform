@@ -9,16 +9,19 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api")
 public class ApiController {
+    /*
     @Autowired
     PlataformasRepo plataformasRepo;
     @Autowired
     PersonasRepo personasRepo;
     @Autowired
     PeriodicidadesRepo periodicidadesRepo;
+    */
     @Autowired
     GruposRepo gruposRepo;
+    /*
     @Autowired
     FormasDePagoRepo formasDePagoRepo;
     @Autowired
@@ -37,10 +40,12 @@ public class ApiController {
     public List<Periodicidad> periodicidades(){
         return periodicidadesRepo.findAll();
     }
+    */
     @RequestMapping("/grupos")
     public List<Grupo> grupos(){
         return gruposRepo.findAll();
     }
+    /*
     @RequestMapping("/formasdepago")
     public List<FormaDePago> formasdepago(){
         return formasDePagoRepo.findAll();
@@ -53,4 +58,5 @@ public class ApiController {
     public List<Recibo> recibos(){
         return recibosRepo.findAll();
     }
+    */
 }

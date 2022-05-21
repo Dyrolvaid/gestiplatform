@@ -16,10 +16,12 @@ public class Recibo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-//    @JsonIgnoreProperties("recibos")
-//    @ManyToOne
-//    @JoinColumn(name = "id_grupo", referencedColumnName = "id")
-//    private Grupo grupo;
+    /*
+    @JsonIgnoreProperties("recibos")
+    @ManyToOne
+    @JoinColumn(name = "id_grupo", referencedColumnName = "id")
+    private Grupo grupo;
+    */
     private int idGrupo;
     private LocalDate fechaEmision;
     private LocalDate fechaCobro;

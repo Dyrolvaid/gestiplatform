@@ -17,7 +17,9 @@ public class Periodicidad {
     private int id;
     private String tipo;
     private String descripcion;
-//    @JsonIgnoreProperties("periodicidad")
-//    @OneToMany(mappedBy = "periodicidad")
-//    private List<Suscripcion> suscripciones;
+    /*
+    @JsonIgnoreProperties("periodicidad")
+    @OneToMany(mappedBy = "periodicidad")
+    private List<Suscripcion> suscripciones;
+    */
 }
