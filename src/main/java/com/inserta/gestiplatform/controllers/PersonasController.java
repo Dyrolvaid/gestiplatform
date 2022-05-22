@@ -16,19 +16,20 @@ public class PersonasController {
     @Autowired
     PersonasRepo personasRepo;
     @PostMapping("/login")
-    public String login(@RequestParam String correo, @RequestParam String clave, HttpSession session, Model model){
+    public String login(@RequestParam String correo, @RequestParam String clave, HttpSession session, Model model) {
         Persona usuarioEncontrado = personasRepo.findByCorreoAndClave(correo, clave);
-        if(usuarioEncontrado != null){
+        if (usuarioEncontrado != null) {
             session.setAttribute("usuarioActivo", usuarioEncontrado);
-            return "index";
+            return "api";
         } else {
-            model.addAttribute("usuarioErroneo", false);
-            return "login";
+            model.addAttribute("logoYaPulsado", true);
+            model.addAttribute("usuarioErroneo", true);
+            return "hall";
         }
     }
     @GetMapping("/logout")
     public String logout(HttpSession session){
         session.invalidate();
-        return "login";
+        return "hall";
     }
 }
