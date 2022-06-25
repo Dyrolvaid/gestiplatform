@@ -55,6 +55,14 @@ public class ApiController {
     public List<Grupo> grupos(){
         return gruposRepo.findAll();
     }
+
+    @RequestMapping("/grupos/persona/{id}")
+    public List<Grupo> gruposPorPersonaId(@PathVariable Integer id) {
+        Persona personaFiltrar = personasRepo.findById(id).orElse(null);
+        return gruposRepo.findByPersona(personaFiltrar);
+    }
+
+
     @RequestMapping("/formasdepago")
     public List<FormaDePago> formasdepago(){
         return formasDePagoRepo.findAll();
