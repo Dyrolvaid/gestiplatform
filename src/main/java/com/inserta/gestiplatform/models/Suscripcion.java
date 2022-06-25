@@ -16,23 +16,17 @@ public class Suscripcion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    /*
-    @JsonIgnoreProperties("suscripciones")
+    //@JsonIgnoreProperties("suscripciones") //No se porqué esto está aquí. Lo dejo por si acaso.
     @ManyToOne
     @JoinColumn(name = "id_plataforma", referencedColumnName = "id")
     private Plataforma plataforma;
-    @JsonIgnoreProperties("suscripciones")
     @ManyToOne
     @JoinColumn(name = "id_periodicidad", referencedColumnName = "id")
     private Periodicidad periodicidad;
-    @JsonIgnoreProperties("suscripciones")
     @ManyToOne
     @JoinColumn(name = "id_forma_de_pago", referencedColumnName = "id")
     private FormaDePago formaDePago;
-    */
-    private int idPlataforma;
-    private int idPeriodicidad;
-    private int idFormaDePago;
+
     private String descripcion;
     private LocalDate fechaAlta;
     private LocalDate fechaProximoCobro;
