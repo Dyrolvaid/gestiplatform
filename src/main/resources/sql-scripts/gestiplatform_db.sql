@@ -106,14 +106,9 @@ INSERT INTO suscripciones(id_plataforma, id_periodicidad, id_forma_de_pago, desc
 (4, 4, 2, 'Spotify con los colegas internacionales','2020-03-26','2022-06-26', 39.4,'goonies@go.grom','A2B4C6');
 
 INSERT INTO grupos(id_persona, id_suscripcion) VALUES
-(1, 4),
-(1, 4),
-(1, 3),
-(1, 3),
-(1, 2),
-(1, 2),
 (1, 1),
-(1, 1),
+(1, 2),
+(1, 3),
 (1, 4),
 (2, 3),
 (6, 4),
