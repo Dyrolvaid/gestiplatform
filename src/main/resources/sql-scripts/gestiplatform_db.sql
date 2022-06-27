@@ -107,6 +107,14 @@ INSERT INTO suscripciones(id_plataforma, id_periodicidad, id_forma_de_pago, desc
 
 INSERT INTO grupos(id_persona, id_suscripcion) VALUES
 (1, 4),
+(1, 4),
+(1, 3),
+(1, 3),
+(1, 2),
+(1, 2),
+(1, 1),
+(1, 1),
+(1, 4),
 (2, 3),
 (6, 4),
 (5, 1),
