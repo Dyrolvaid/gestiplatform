@@ -86,7 +86,8 @@ INSERT INTO plataformas(nombre, url_general, url_admin, logo, limite_perfiles, l
 ('Disney+', 'www.disneyplus.com', 'www.disneyplus.com/login', 'assets/img/disney.png', '4', '4', '#ffffff'),
 ('Spotify', 'www.spotify.com', 'www.spotify.com/login', 'assets/img/spotify.png', '2', '2','#0dff00'),
 ('Movistar', 'www.movistar.es', 'www.movistar.es', 'assets/img/movistar.png', '3', '2', '#0dff00'),
-('Fubo', 'www.fubo.tv', 'www.fubo.tv', 'assets/img/fubo.png', '6', '3', '#000000');
+('Fubo Tv', 'www.fubo.tv', 'www.fubo.tv', 'assets/img/fubo.png', '6', '3', '#000000'),
+('Prime Video', 'www.primevideo.com', 'www.primevideo.com', 'assets/img/prime.png', '5', '4', '#ffffff');
 
 INSERT INTO periodicidad(tipo, descripcion) VALUES
 ('Mensual','Cada mes.'),
@@ -103,9 +104,12 @@ INSERT INTO formas_pago(descripcion, favorita) VALUES
 INSERT INTO suscripciones(id_plataforma, id_periodicidad, id_forma_de_pago, descripcion, fecha_alta, fecha_proximo_cobro, precio, credenciales_correo, credenciales_clave) VALUES
 (4, 3, 1, 'Spotify con la familia','2021-06-07','2022-08-07', 9.99,'ohio@mail.com','12345'),
 (2, 2, 3, 'HBO Sólo Rafa','2020-09-03','2022-09-03', 30.60,'mymail@not.com','54321'),
-(3, 1, 1, 'Disneyx2 Mucho-Martina','2022-03-01','2023-04-01', 7.77,'somebodysmail@maybe.es','ABCDE'),
+(3, 1, 1, 'DisneyX2 Mucho-Martina','2022-03-01','2023-04-01', 7.77,'somebodysmail@maybe.es','ABCDE'),
 (1, 5, 2, 'Manu s Netflix', '2022-04-01','2022-10-01', 53.70,'trabajo@yahoo.nz','EDCBA'),
-(4, 4, 2, 'Spotify con los colegas internacionales','2020-03-26','2022-06-26', 39.4,'goonies@go.grom','A2B4C6');
+(4, 4, 2, 'Spotify con los colegas internacionales','2020-03-26','2022-06-26', 39.4,'goonies@go.grom','A2B4C6'),
+(5, 3, 2,'Especial niños hasta 18 años', '2022-05-03', '2022-07-03', 125.10, 'abc@abc.abc', 'Abc12'),
+(6, 1, 2,'Para sábados y domingo', '2022-04-01', '2022-05-01', 150.00, 'fut@fut.fut', 'fut12'),
+(7, 2, 2,'Especial documentales', '2022-01-01', '2022-12-31', 250.00, 'pri@pri.pri', 'Pri12');
 
 INSERT INTO grupos(id_persona, id_suscripcion) VALUES
 (1, 1),
@@ -113,11 +117,17 @@ INSERT INTO grupos(id_persona, id_suscripcion) VALUES
 (1, 3),
 (1, 4),
 (2, 3),
+(2, 5),
 (6, 4),
+(6, 5),
 (5, 1),
+(5, 5),
 (3, 4),
+(3, 6),
 (4, 2),
-(7, 3);
+(4, 7),
+(7, 3),
+(4, 8);
 
 INSERT INTO recibos(id_grupo, fecha_emision, fecha_cobro, vigencia_inicio, vigencia_fin, cobrado, importe) VALUES
 (1, '2022-03-02', '2022-04-02', '2022-03-22', '2022-05-17', 1, 4.4),
