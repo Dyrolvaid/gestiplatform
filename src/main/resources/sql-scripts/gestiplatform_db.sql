@@ -81,10 +81,12 @@ INSERT INTO personas(correo, nombre, clave, telefono) VALUES
 ('martina@yahoo.com', 'Martina', '?.#-AaB4','+34656565653');
 
 INSERT INTO plataformas(nombre, url_general, url_admin, logo, limite_perfiles, limite_reproducciones, color) VALUES
-('Netflix', 'www.netflix.com', 'www.netflix.com/es/login', 'img/netflix.png', '5', '4', '#ff0000'),
-('HBO', 'www.hbomax.com', 'play.hbomax.com/login', 'img/hbo.png', '5', '2', '#000000'),
-('Disney+', 'www.disneyplus.com', 'www.disneyplus.com/login', 'img/disney.png', '4', '4', '#ffffff'),
-('Spotify', 'www.spotify.com', 'www.spotify.com/login', 'img/spotify.png', '2', '2','#0dff00');
+('Netflix', 'www.netflix.com', 'www.netflix.com/es/login', 'assets/img/netflix.png', '5', '4', '#ff0000'),
+('HBO', 'www.hbomax.com', 'play.hbomax.com/login', 'assets/img/hbo.png', '5', '2', '#000000'),
+('Disney+', 'www.disneyplus.com', 'www.disneyplus.com/login', 'assets/img/disney.png', '4', '4', '#ffffff'),
+('Spotify', 'www.spotify.com', 'www.spotify.com/login', 'assets/img/spotify.png', '2', '2','#0dff00'),
+('Movistar', 'www.movistar.es', 'www.movistar.es', 'assets/img/movistar.png', '3', '2', '#0dff00'),
+('Fubo', 'www.fubo.tv', 'www.fubo.tv', 'assets/img/fubo.png', '6', '3', '#000000');
 
 INSERT INTO periodicidad(tipo, descripcion) VALUES
 ('Mensual','Cada mes.'),
