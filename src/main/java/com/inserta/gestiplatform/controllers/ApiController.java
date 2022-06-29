@@ -79,8 +79,9 @@ public class ApiController {
     public List<Recibo> recibos(){
         return recibosRepo.findAll();
     }
-    @RequestMapping("/recibos/{idGrupo}")
+    @RequestMapping("/recibos/grupos/{idGrupo}")
     public List<Recibo> recibosByGroup(@PathVariable Integer idGrupo) {
-        return recibosRepo.searchRecibosByIdGrupo(idGrupo);
+        Grupo grupoFiltrar = gruposRepo.findById(idGrupo).orElse(null);
+        return recibosRepo.findByGrupo(grupoFiltrar);
     }
 }
