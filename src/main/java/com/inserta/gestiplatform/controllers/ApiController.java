@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -89,4 +90,18 @@ public class ApiController {
         Grupo grupoFiltrar = gruposRepo.findById(idGrupo).orElse(null);
         return recibosRepo.findByGrupo(grupoFiltrar);
     }
+
+    @RequestMapping("/recibos/suscripcion/{idSuscripcion}")
+    public List<Recibo> recibosBySuscripcionId(@PathVariable Integer idSuscripcion) {
+        Suscripcion suscripcion = suscripcionesRepo.findById(idSuscripcion).orElse(null);
+        List<Recibo> listaRecibos = recibosRepo.findAll();
+        List<Recibo> listaRecibosFiltrar = new ArrayList<>();
+        for (Recibo recibo : listaRecibos) {
+            if (suscripcion != null && recibo.getGrupo().getSuscripcion().getId() == suscripcion.getId()) {
+                listaRecibosFiltrar.add(recibo);
+            }
+        }
+        return listaRecibosFiltrar;
+    }
+
 }
