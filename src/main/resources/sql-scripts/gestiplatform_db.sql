@@ -102,14 +102,13 @@ INSERT INTO formas_pago(descripcion, favorita) VALUES
 ('Con Tarjeta', 0);
 
 INSERT INTO suscripciones(id_plataforma, id_periodicidad, id_forma_de_pago, descripcion, fecha_alta, fecha_proximo_cobro, precio, credenciales_correo, credenciales_clave) VALUES
-(4, 3, 1, 'Spotify con la familia','2021-06-07','2022-08-07', 9.99,'ohio@mail.com','12345'),
-(2, 2, 3, 'HBO Sólo Rafa','2020-09-03','2022-09-03', 30.60,'mymail@not.com','54321'),
-(3, 1, 1, 'DisneyX2 Mucho-Martina','2022-03-01','2023-04-01', 7.77,'somebodysmail@maybe.es','ABCDE'),
-(1, 5, 2, 'Manu s Netflix', '2022-04-01','2022-10-01', 53.70,'trabajo@yahoo.nz','EDCBA'),
-(4, 4, 2, 'Spotify con los colegas internacionales','2020-03-26','2022-06-26', 39.4,'goonies@go.grom','A2B4C6'),
-(5, 3, 2,'Especial niños hasta 18 años', '2022-05-03', '2022-07-03', 125.10, 'abc@abc.abc', 'Abc12'),
-(6, 1, 2,'Para sábados y domingo', '2022-04-01', '2022-05-01', 150.00, 'fut@fut.fut', 'fut12'),
-(7, 2, 2,'Especial documentales', '2022-01-01', '2022-12-31', 250.00, 'pri@pri.pri', 'Pri12');
+(4, 1, 1, 'Spotify con la familia','2021-06-07','2022-08-07', 9.99,'ohio@mail.com','12345'),
+(2, 2, 2, 'Reúne contenidos de 5 plataformas TV ','2020-09-03','2022-09-03', 69.99,'mymail@not.com','54321'),
+(3, 2, 2, 'Especial niños','2022-03-01','2023-04-01',89.90,'somebodysmail@maybe.es','ABCDE'),
+(1, 1, 1, 'Netflix Premium', '2022-04-01','2022-10-01', 17.99,'trabajo@yahoo.nz','EDCBA'),
+(5, 1, 1, 'Movistar Deportes', '2022-05-03', '2022-07-03', 13.50, 'abc@abc.abc', 'Abc12'),
+(6, 1, 1, 'Futbol', '2022-04-01', '2022-05-01', 3.99, 'fut@fut.fut', 'fut12'),
+(7, 2, 2, 'Especial series en Prime Video', '2022-01-01', '2022-12-31', 36.00, 'pri@pri.pri', 'Pri12');
 
 INSERT INTO grupos(id_persona, id_suscripcion) VALUES
 (1, 1),
@@ -126,8 +125,7 @@ INSERT INTO grupos(id_persona, id_suscripcion) VALUES
 (3, 6),
 (4, 2),
 (4, 7),
-(7, 3),
-(4, 8);
+(7, 3);
 
 INSERT INTO recibos(id_grupo, fecha_emision, fecha_cobro, vigencia_inicio, vigencia_fin, cobrado, importe) VALUES
 (1, '2022-03-02', '2022-04-02', '2022-03-22', '2022-05-17', 1, 4.4),
