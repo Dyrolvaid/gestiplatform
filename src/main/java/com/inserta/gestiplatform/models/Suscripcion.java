@@ -33,6 +33,7 @@ public class Suscripcion {
     private double precio;
     private String credencialesCorreo;
     private String credencialesClave;
+    private boolean suscripcionActiva;
     /*
     @JsonIgnoreProperties("suscripcion")
     @OneToMany(mappedBy = "suscripcion")

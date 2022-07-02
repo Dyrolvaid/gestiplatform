@@ -28,4 +28,5 @@ public class Recibo {
     private LocalDate vigenciaFin;
     private boolean cobrado;
     private double importe;
+    private boolean reciboActivo;
 }

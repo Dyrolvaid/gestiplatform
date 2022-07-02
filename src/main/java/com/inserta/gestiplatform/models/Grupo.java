@@ -27,6 +27,8 @@ public class Grupo {
     @ManyToOne
     @JoinColumn(name = "id_suscripcion",referencedColumnName = "id")
     private Suscripcion suscripcion;
+
+    private boolean grupoActivo;
     /*
     @JsonIgnoreProperties("grupo")
     @OneToMany(mappedBy = "grupo")
