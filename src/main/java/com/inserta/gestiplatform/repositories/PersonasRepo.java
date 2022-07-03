@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 @RepositoryRestResource(path = "personas", collectionResourceRel = "personas")
 public interface PersonasRepo extends JpaRepository<Persona, Integer> {
     Persona findByCorreoAndClave(String correo, String clave);
+    Persona findByCorreo(String correo);
 }

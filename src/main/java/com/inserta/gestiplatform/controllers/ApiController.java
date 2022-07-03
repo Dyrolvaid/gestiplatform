@@ -46,6 +46,10 @@ public class ApiController {
     public Persona personaByCorreoAndClave(@PathVariable String correo, @PathVariable String clave){
         return personasRepo.findByCorreoAndClave(correo, clave);
     }
+    @RequestMapping("/personas/correo/{correo}")
+    public Persona personaByCorreo(@PathVariable String correo) {
+        return personasRepo.findByCorreo(correo);
+    }
 
     @RequestMapping("/periodicidades")
     public List<Periodicidad> periodicidades(){
