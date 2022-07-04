@@ -47,8 +47,7 @@ CREATE TABLE personas(
 	correo VARCHAR(60) UNIQUE DEFAULT NULL,
 	nombre VARCHAR(30) DEFAULT NULL,
     clave VARCHAR(60) DEFAULT NULL,
-	telefono VARCHAR(20) DEFAULT NULL,
-	admin BOOLEAN DEFAULT 0
+	telefono VARCHAR(20) DEFAULT NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE grupos(
@@ -57,7 +56,8 @@ CREATE TABLE grupos(
     FOREIGN KEY (id_persona) REFERENCES personas(id),
     id_suscripcion INT,
 	FOREIGN KEY (id_suscripcion) REFERENCES suscripciones(id),
-	grupo_activo BOOLEAN DEFAULT 0
+	grupo_activo BOOLEAN DEFAULT 0,
+    admin BOOLEAN DEFAULT 0
 ) ENGINE=InnoDB;
 
 CREATE TABLE recibos(
@@ -73,8 +73,8 @@ CREATE TABLE recibos(
     recibo_activo BOOLEAN DEFAULT 1
 ) ENGINE=InnoDB;
 
-INSERT INTO personas(correo, nombre, clave, telefono, admin) VALUES
-('admin@gmail.com', 'Admin', '12345', '096541789', 1);
+INSERT INTO personas(correo, nombre, clave, telefono) VALUES
+('admin@gmail.com', 'Admin', '12345', '096541789');
 
 INSERT INTO personas(correo, nombre, clave, telefono) VALUES
 ('martina@hotmail.com', 'Marta', '54321', '062683578'),
@@ -119,40 +119,40 @@ INSERT INTO suscripciones(id_plataforma, id_periodicidad, id_forma_de_pago, desc
 (7, 1, 2, 'Especial series en Prime Video', '2022-05-02','2022-08-02', 3.99, 'pri@pri.pri', 'Pri12', 1),
 (8, 1, 2, 'El aula de trabajo del Grupo 2', '2021-12-10', '2022-07-12', 0.00, 'grupo2@gestiplatform.com', '1234ABCD', 1);
 
-INSERT INTO grupos(id_persona, id_suscripcion, grupo_activo) VALUES
-(1, 1, 1),
-(1, 2, 1),
-(1, 3, 1),
-(1, 4, 1),
-(1, 5, 1),
-(1, 6, 1),
-(1, 7, 1),
-(2, 1, 1),
-(2, 2, 1),
-(2, 3, 1),
-(2, 4, 1),
-(2, 5, 1),
-(2, 6, 1),
-(2, 7, 1),
-(3, 1, 1),
-(3, 2, 1),
-(3, 3, 1),
-(3, 5, 1),
-(3, 6, 1),
-(3, 7, 1),
-(4, 1, 1),
-(4, 2, 1),
-(4, 3, 1),
-(4, 6, 1),
-(4, 7, 1),
-(5, 1, 1),
-(5, 2, 1),
-(5, 6, 1),
-(6, 6, 1),
-(6, 7, 1),
-(8, 8, 1),
-(9, 8, 1),
-(10, 8, 1);
+INSERT INTO grupos(id_persona, id_suscripcion, grupo_activo, admin) VALUES
+(1, 1, 1, 1),
+(1, 2, 1, 0),
+(1, 3, 1, 0),
+(1, 4, 1, 0),
+(1, 5, 1, 0),
+(1, 6, 1, 0),
+(1, 7, 1, 0),
+(2, 1, 1, 0),
+(2, 2, 1, 1),
+(2, 3, 1, 0),
+(2, 4, 1, 1),
+(2, 5, 1, 0),
+(2, 6, 1, 0),
+(2, 7, 1, 0),
+(3, 1, 1, 0),
+(3, 2, 1, 0),
+(3, 3, 1, 1),
+(3, 5, 1, 1),
+(3, 6, 1, 0),
+(3, 7, 1, 0),
+(4, 1, 1, 0),
+(4, 2, 1, 0),
+(4, 3, 1, 0),
+(4, 6, 1, 1),
+(4, 7, 1, 0),
+(5, 1, 1, 0),
+(5, 2, 1, 0),
+(5, 6, 1, 0),
+(6, 6, 1, 0),
+(6, 7, 1, 1),
+(8, 8, 1, 1),
+(9, 8, 1, 1),
+(10, 8, 1, 1);
 
 INSERT INTO recibos(id_grupo, fecha_emision, fecha_cobro, vigencia_inicio, vigencia_fin, cobrado, importe, recibo_activo) VALUES
 (1, '2022-05-02', '2022-06-02', '2022-05-02', '2022-06-02', 1, 3.59, 1),

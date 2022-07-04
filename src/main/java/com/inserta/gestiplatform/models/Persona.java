@@ -19,7 +19,6 @@ public class Persona {
     private String nombre;
     private String clave;
     private String telefono;
-    private boolean admin;
     /*
     @JsonIgnoreProperties("persona")
     @OneToMany(mappedBy = "persona")

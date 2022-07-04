@@ -29,6 +29,7 @@ public class Grupo {
     private Suscripcion suscripcion;
 
     private boolean grupoActivo;
+    private boolean admin;
     /*
     @JsonIgnoreProperties("grupo")
     @OneToMany(mappedBy = "grupo")
