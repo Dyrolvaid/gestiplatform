@@ -80,14 +80,15 @@ INSERT INTO personas(correo, nombre, clave, telefono) VALUES
 
 INSERT INTO personas(correo, nombre, clave, telefono) VALUES
 ('martina@hotmail.com', 'Marta', '54321', '062683578'),
-('jorge@gmail.com', 'Jorge', 'ABCDE','+34945245678'),
+('jorge@gmail.com', 'Jorge', 'ABCDE','945245678'),
 ('rafa@bizkaia.eu','Rafa', 'EDCBA','660986482'),
-('manolo@hotmail.com', 'Manolo', 'A1B2C3','+346604850328'),
-('salva@gmail.com', 'Salva', '3C2B1A','+34656565656'),
-('martina@yahoo.com', 'Martina', '?.#-AaB4','+34656565653'),
-('david@gestiplatform.es', 'Dyrolvaid', 'whileymedio', '+34827462096'),
-('gerardo@gestiplatform.eu', 'Gerardo', 'animojefa', '+34927539490'),
-('nuria@gestiplatform.com', 'Nuria', 'gobiernodeldato', '+34203763864');
+('manolo@hotmail.com', 'Manolo', 'A1B2C3','6604850328'),
+('salva@gmail.com', 'Salva', '3C2B1A','656565656'),
+('martina@yahoo.com', 'Martina', '?.#-AaB4','656565653'),
+('david@gestiplatform.es', 'Dyrolvaid', 'whileymedio', '827462096'),
+('gerardo@gestiplatform.eu', 'Gerardo', 'animojefa', '927539490'),
+('nuria@gestiplatform.com', 'Nuria', 'gobiernodeldato', '203763864'),
+('isabella@mail.com', 'Isabella', 'isabella', '027429476');
 
 INSERT INTO plataformas(nombre, url_general, url_admin, logo, limite_perfiles, limite_reproducciones, color) VALUES
 ('Netflix', 'www.netflix.com', 'www.netflix.com/es/login', 'assets/img/netflix.png', 5, 4, '#ff0000'),
@@ -133,9 +134,6 @@ INSERT INTO grupos(id_persona, id_suscripcion, grupo_activo, admin) VALUES
 (2, 2, 1, 1),
 (2, 3, 1, 0),
 (2, 4, 1, 1),
-#(2, 5, 1, 0),
-#(2, 6, 1, 0),
-#(2, 7, 1, 0),
 (3, 1, 1, 0),
 (3, 2, 1, 0),
 (3, 3, 1, 1),
@@ -190,15 +188,6 @@ INSERT INTO recibos(id_grupo, fecha_emision, fecha_cobro, vigencia_inicio, vigen
 (11, '2022-05-02', '2022-06-02', '2022-05-02', '2022-06-02', 1, 4.99, 1),
 (11, '2022-06-02', '2022-07-02', '2022-06-02', '2022-07-02', 1, 4.99, 1),
 (11, '2022-07-02', '2022-08-02', '2022-07-02', '2022-08-02', 0, 4.99, 1),
-#(12, '2022-05-02', '2022-06-02', '2022-05-02', '2022-06-02', 1, 8.33, 1),
-#(12, '2022-06-02', '2022-07-02', '2022-06-02', '2022-07-02', 1, 8.33, 1),
-#(12, '2022-07-02', '2022-08-02', '2022-07-02', '2022-08-02', 0, 8.33, 1),
-#(13, '2022-05-02', '2022-06-02', '2022-05-02', '2022-06-02', 1, 0.66, 1),
-#(13, '2022-06-02', '2022-07-02', '2022-06-02', '2022-07-02', 1, 0.66, 1),
-#(13, '2022-07-02', '2022-08-02', '2022-07-02', '2022-08-02', 0, 0.66, 1),
-#(14, '2022-05-02', '2022-06-02', '2022-05-02', '2022-06-02', 1, 0.79, 1),
-#(14, '2022-06-02', '2022-07-02', '2022-06-02', '2022-07-02', 1, 0.79, 1),
-#(14, '2022-07-02', '2022-08-02', '2022-07-02', '2022-08-02', 0, 0.79, 1),
 (12, '2022-05-02', '2022-06-02', '2022-05-02', '2022-06-02', 1, 3.59, 1),
 (12, '2022-06-02', '2022-07-02', '2022-06-02', '2022-07-02', 1, 3.59, 1),
 (12, '2022-07-02', '2022-08-02', '2022-07-02', '2022-08-02', 0, 3.59, 1),

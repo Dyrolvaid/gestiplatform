@@ -3,10 +3,12 @@ package com.inserta.gestiplatform.controllers;
 import com.inserta.gestiplatform.models.*;
 import com.inserta.gestiplatform.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,6 +62,33 @@ public class ApiController {
     public List<Grupo> grupos(){
         return gruposRepo.findAll();
     }
+
+    //UN POST A LA API V1!!!! OW, YEAH!!!
+    //*********************************************************************************************
+    @PostMapping(path = "/grupos", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<Object> respuestaGrupo(@RequestBody Grupo grupo) {
+        int id = gruposRepo.findAll().size() + 1;
+        grupo.setId(id);
+        List<Grupo> listaGrupos = gruposRepo.findAll();
+        HttpStatus httpStatus = HttpStatus.NOT_MODIFIED;
+        ResponseEntity<Object> error = new ResponseEntity<>(httpStatus);
+        for (Grupo grupoIterado : listaGrupos) {
+            if (grupo.getPersona().getId() == grupoIterado.getPersona().getId()
+                    && grupo.getSuscripcion().getId() == grupoIterado.getSuscripcion().getId()) {
+                System.out.println("Esta persona ya está suscrita.");
+                return error;
+            }
+        }
+        gruposRepo.save(grupo);
+        //grupos().add(grupo);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(grupo.getId())
+                .toUri();
+        return ResponseEntity.created(location).build();
+    }
+    //***********************************************************************************************
+
     @RequestMapping("/grupos/{id}")
     public Grupo grupoById(@PathVariable Integer id) {
         return gruposRepo.findById(id).orElse(null);
