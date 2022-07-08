@@ -12,4 +12,6 @@ import java.util.List;
 @RepositoryRestResource(path = "recibos", collectionResourceRel = "recibos")
 public interface RecibosRepo extends JpaRepository<Recibo, Integer> {
     List<Recibo> findByGrupo(Grupo grupo);
+
+    Recibo findTopByOrderByIdDesc();
 }
