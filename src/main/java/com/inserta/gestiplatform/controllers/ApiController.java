@@ -3,7 +3,6 @@ package com.inserta.gestiplatform.controllers;
 import com.inserta.gestiplatform.models.*;
 import com.inserta.gestiplatform.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -13,7 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
+//@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping(path = "/api/v1")
 public class ApiController {
 
     @Autowired
@@ -30,6 +30,9 @@ public class ApiController {
     SuscripcionesRepo suscripcionesRepo;
     @Autowired
     RecibosRepo recibosRepo;
+
+//    @PersistenceContext
+//    EntityManagerFactory entityManagerFactory;
 
     @RequestMapping("/plataformas")
     public List<Plataforma> plataformas(){
@@ -65,38 +68,58 @@ public class ApiController {
 
     //UN POST A LA API V1!!!! OW, YEAH!!!
     //*********************************************************************************************
-    @PostMapping(path = "/grupos", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Object> respuestaGrupo(@RequestBody Grupo grupo) {
-        int id = gruposRepo.findAll().size() + 1;
-        grupo.setId(id);
-        List<Grupo> listaGrupos = gruposRepo.findAll();
-        HttpStatus httpStatus = HttpStatus.NOT_MODIFIED;
-        ResponseEntity<Object> error = new ResponseEntity<>(httpStatus);
-        for (Grupo grupoIterado : listaGrupos) {
-            if (grupo.getPersona().getId() == grupoIterado.getPersona().getId()
-                    && grupo.getSuscripcion().getId() == grupoIterado.getSuscripcion().getId()) {
-                System.out.println("Esta persona ya está suscrita.");
-                return error;
-            }
-        }
-        gruposRepo.save(grupo);
-        //grupos().add(grupo);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(grupo.getId())
-                .toUri();
-        return ResponseEntity.created(location).build();
-    }
+//    @PostMapping(path = "/grupos", consumes = "application/json", produces = "application/json")
+//    public ResponseEntity<Object> respuestaGrupo(@RequestBody Grupo grupo) {
+//        Grupo grupoConUltimaId = gruposRepo.findTopByOrderByIdDesc(gruposRepo.findAll());
+//        grupo.setId(grupoConUltimaId.getId() + 1);
+//        List<Grupo> listaGrupos = gruposRepo.findAll();
+//        HttpStatus httpStatus = HttpStatus.NOT_MODIFIED;
+//        ResponseEntity<Object> error = new ResponseEntity<>(httpStatus);
+//        for (Grupo grupoIterado : listaGrupos) {
+//            if (grupo.getPersona().getId().equals(grupoIterado.getPersona().getId())
+//                    && grupo.getSuscripcion().getId().equals(grupoIterado.getSuscripcion().getId())) {
+//                System.out.println("Esta persona ya está suscrita.");
+//                return error;
+//            }
+//        }
+//        gruposRepo.save(grupo);
+//        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+//                .path("/{id}")
+//                .buildAndExpand(grupo.getId())
+//                .toUri();
+//        return ResponseEntity.created(location).build();
+//    }
     //***********************************************************************************************
+//    @DeleteMapping(path="/grupos/{id}"/*consumes = "application/json", produces = "application/json"*/)
+//    public /*ResponseEntity<Grupo>*/ void deleteGrupoByPersona(@PathVariable Integer id) {
+//        List<Grupo> listaGruposByPersonaId = gruposRepo.findByPersonaId(id);
+//        List<Suscripcion> listaSuscripciones = suscripcionesRepo.findAll();
+//        for (Suscripcion suscripcionIterada : listaSuscripciones){
+//            for (Grupo grupoIterado: listaGruposByPersonaId){
+//                if (grupoIterado.getSuscripcion().getId() == suscripcionIterada.getId()){
+//                    Grupo grupoEncontrado = entityManager.find(Grupo.class, grupoIterado.getId());
+//                    entityManager.remove(grupoEncontrado);
+//                    entityManager.close();
+//                }
+//
+//            }
+//        }
+//        return gruposRepo.deleteByPersona(persona);
+//        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+//                .path("")
+//                .buildAndExpand(persona)
+//                .toUri();
+//        return ResponseEntity.created(location).build();
 
+//        return gruposRepo.findAll().remove(grupo);
+//    }
     @RequestMapping("/grupos/{id}")
     public Grupo grupoById(@PathVariable Integer id) {
         return gruposRepo.findById(id).orElse(null);
     }
     @RequestMapping("/grupos/persona/{id}")
     public List<Grupo> gruposPorPersonaId(@PathVariable Integer id) {
-        Persona personaFiltrar = personasRepo.findById(id).orElse(null);
-        return gruposRepo.findByPersona(personaFiltrar);
+        return gruposRepo.findByPersonaId(id);
     }
     @RequestMapping("/grupos/suscripcion/{id}")
     public List<Grupo> gruposPorSuscripcionId(@PathVariable Integer id) {
@@ -124,17 +147,42 @@ public class ApiController {
         return recibosRepo.findByGrupo(grupoFiltrar);
     }
 
+    //Puede parecer que no, pero los siguientes dos métodos hacen lo que se espera de ellos.
     @RequestMapping("/recibos/suscripcion/{idSuscripcion}")
     public List<Recibo> recibosBySuscripcionId(@PathVariable Integer idSuscripcion) {
         Suscripcion suscripcion = suscripcionesRepo.findById(idSuscripcion).orElse(null);
         List<Recibo> listaRecibos = recibosRepo.findAll();
         List<Recibo> listaRecibosFiltrar = new ArrayList<>();
         for (Recibo recibo : listaRecibos) {
-            if (suscripcion != null && recibo.getGrupo().getSuscripcion().getId() == suscripcion.getId()) {
+            if (suscripcion != null && recibo.getGrupo().getSuscripcion().getId().equals(suscripcion.getId())) {
                 listaRecibosFiltrar.add(recibo);
             }
         }
         return listaRecibosFiltrar;
     }
 
+    @RequestMapping("/recibos/persona/{idPersona}")
+    public List<Recibo> recibosByPersonaId(@PathVariable Integer idPersona) {
+        Persona persona = personasRepo.findById(idPersona).orElse(null);
+        List<Recibo> listaRecibos = recibosRepo.findAll();
+        List<Recibo> listaRecibosFiltrar = new ArrayList<>();
+        for (Recibo recibo : listaRecibos) {
+            if (persona != null && recibo.getGrupo().getPersona().getId().equals(persona.getId())) {
+                listaRecibosFiltrar.add(recibo);
+            }
+        }
+        return listaRecibosFiltrar;
+    }
+
+    @PostMapping(path = "/grupos", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<Object> respuestaGrupo(@RequestBody Grupo grupo) {
+        Grupo grupoConUltimaId = gruposRepo.findTopByOrderByIdDesc();
+        grupo.setId(grupoConUltimaId.getId() + 1);
+        gruposRepo.save(grupo);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(grupo.getId())
+                .toUri();
+        return ResponseEntity.created(location).build();
+    }
 }

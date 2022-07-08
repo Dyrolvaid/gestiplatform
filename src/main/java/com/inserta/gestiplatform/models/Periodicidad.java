@@ -1,20 +1,16 @@
 package com.inserta.gestiplatform.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Objects;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Entity
 @Table(name = "periodicidad")
 public class Periodicidad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String tipo;
     private String descripcion;
     /*
@@ -22,4 +18,53 @@ public class Periodicidad {
     @OneToMany(mappedBy = "periodicidad")
     private List<Suscripcion> suscripciones;
     */
+
+    public Periodicidad() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Periodicidad that)) return false;
+        return getId().equals(that.getId()) && getTipo().equals(that.getTipo()) && getDescripcion().equals(that.getDescripcion());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getTipo(), getDescripcion());
+    }
+
+    @Override
+    public String toString() {
+        return "Periodicidad{" +
+                "id=" + id +
+                ", tipo='" + tipo + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                '}';
+    }
+
 }

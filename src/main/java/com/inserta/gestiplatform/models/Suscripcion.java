@@ -1,21 +1,18 @@
 package com.inserta.gestiplatform.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Objects;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Entity
 @Table(name = "suscripciones")
 public class Suscripcion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     //@JsonIgnoreProperties("suscripciones") //No se porqué esto está aquí. Lo dejo por si acaso.
     @ManyToOne
     @JoinColumn(name = "id_plataforma", referencedColumnName = "id")
@@ -39,4 +36,124 @@ public class Suscripcion {
     @OneToMany(mappedBy = "suscripcion")
     private List<Grupo> grupos;
     */
+
+    public Suscripcion() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Plataforma getPlataforma() {
+        return plataforma;
+    }
+
+    public void setPlataforma(Plataforma plataforma) {
+        this.plataforma = plataforma;
+    }
+
+    public Periodicidad getPeriodicidad() {
+        return periodicidad;
+    }
+
+    public void setPeriodicidad(Periodicidad periodicidad) {
+        this.periodicidad = periodicidad;
+    }
+
+    public FormaDePago getFormaDePago() {
+        return formaDePago;
+    }
+
+    public void setFormaDePago(FormaDePago formaDePago) {
+        this.formaDePago = formaDePago;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public LocalDate getFechaAlta() {
+        return fechaAlta;
+    }
+
+    public void setFechaAlta(LocalDate fechaAlta) {
+        this.fechaAlta = fechaAlta;
+    }
+
+    public LocalDate getFechaProximoCobro() {
+        return fechaProximoCobro;
+    }
+
+    public void setFechaProximoCobro(LocalDate fechaProximoCobro) {
+        this.fechaProximoCobro = fechaProximoCobro;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public String getCredencialesCorreo() {
+        return credencialesCorreo;
+    }
+
+    public void setCredencialesCorreo(String credencialesCorreo) {
+        this.credencialesCorreo = credencialesCorreo;
+    }
+
+    public String getCredencialesClave() {
+        return credencialesClave;
+    }
+
+    public void setCredencialesClave(String credencialesClave) {
+        this.credencialesClave = credencialesClave;
+    }
+
+    public boolean isSuscripcionActiva() {
+        return suscripcionActiva;
+    }
+
+    public void setSuscripcionActiva(boolean suscripcionActiva) {
+        this.suscripcionActiva = suscripcionActiva;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Suscripcion that)) return false;
+        return Double.compare(that.getPrecio(), getPrecio()) == 0 && isSuscripcionActiva() == that.isSuscripcionActiva() && getId().equals(that.getId()) && getPlataforma().equals(that.getPlataforma()) && getPeriodicidad().equals(that.getPeriodicidad()) && getFormaDePago().equals(that.getFormaDePago()) && getDescripcion().equals(that.getDescripcion()) && getFechaAlta().equals(that.getFechaAlta()) && getFechaProximoCobro().equals(that.getFechaProximoCobro()) && getCredencialesCorreo().equals(that.getCredencialesCorreo()) && getCredencialesClave().equals(that.getCredencialesClave());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getPlataforma(), getPeriodicidad(), getFormaDePago(), getDescripcion(), getFechaAlta(), getFechaProximoCobro(), getPrecio(), getCredencialesCorreo(), getCredencialesClave(), isSuscripcionActiva());
+    }
+
+    @Override
+    public String toString() {
+        return "Suscripcion{" +
+                "id=" + id +
+                ", plataforma=" + plataforma +
+                ", periodicidad=" + periodicidad +
+                ", formaDePago=" + formaDePago +
+                ", descripcion='" + descripcion + '\'' +
+                ", fechaAlta=" + fechaAlta +
+                ", fechaProximoCobro=" + fechaProximoCobro +
+                ", precio=" + precio +
+                ", credencialesCorreo='" + credencialesCorreo + '\'' +
+                ", credencialesClave='" + credencialesClave + '\'' +
+                ", suscripcionActiva=" + suscripcionActiva +
+                '}';
+    }
 }

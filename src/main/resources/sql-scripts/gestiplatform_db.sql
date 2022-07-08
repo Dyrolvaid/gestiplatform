@@ -3,92 +3,94 @@ CREATE DATABASE IF NOT EXISTS gestiplatform_db;
 USE gestiplatform_db;
 
 CREATE TABLE plataformas(
-	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(30) DEFAULT NULL,
-    url_general VARCHAR(255) DEFAULT NULL,
-    url_admin VARCHAR(255) DEFAULT NULL,
-    logo VARCHAR(50) DEFAULT NULL,
-    limite_perfiles INT DEFAULT NULL,
-    limite_reproducciones INT DEFAULT NULL,
-    color VARCHAR(20) DEFAULT NULL
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
+    nombre VARCHAR(30) NOT NULL,
+    url_general VARCHAR(255) NOT NULL,
+    url_admin VARCHAR(255) NOT NULL,
+    logo VARCHAR(50) NOT NULL,
+    limite_perfiles INT NOT NULL,
+    limite_reproducciones INT NOT NULL,
+    color VARCHAR(20) NOT NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE periodicidad(
-	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    tipo VARCHAR(20) DEFAULT NULL,
-    descripcion VARCHAR(255) DEFAULT NULL
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
+    tipo VARCHAR(20) NOT NULL,
+    descripcion VARCHAR(255) NOT NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE formas_pago(
-	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    descripcion VARCHAR(255) DEFAULT NULL,
-    favorita BOOLEAN DEFAULT 0
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
+    descripcion VARCHAR(255) NOT NULL,
+    favorita BOOLEAN DEFAULT 0 NOT NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE suscripciones(
-	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    id_plataforma INT,
-    FOREIGN KEY (id_plataforma) REFERENCES plataformas(id),
-    id_periodicidad INT,
-	FOREIGN KEY (id_periodicidad) REFERENCES periodicidad(id),
-    id_forma_de_pago INT,
-	FOREIGN KEY (id_forma_de_pago) REFERENCES formas_pago(id),
-    descripcion VARCHAR(255) DEFAULT NULL,
-    fecha_alta DATE DEFAULT NULL,
-    fecha_proximo_cobro DATE DEFAULT NULL,
-    precio DOUBLE DEFAULT NULL,
-    credenciales_correo VARCHAR(60) DEFAULT NULL,
-    credenciales_clave VARCHAR(60) DEFAULT NULL,
-    suscripcion_activa BOOLEAN DEFAULT 1
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
+    id_plataforma INT UNSIGNED,
+    FOREIGN KEY (id_plataforma) REFERENCES plataformas(id) ON DELETE CASCADE,
+    id_periodicidad INT UNSIGNED,
+	FOREIGN KEY (id_periodicidad) REFERENCES periodicidad(id) ON DELETE CASCADE,
+    id_forma_de_pago INT UNSIGNED,
+	FOREIGN KEY (id_forma_de_pago) REFERENCES formas_pago(id) ON DELETE CASCADE,
+    descripcion VARCHAR(255) NOT NULL,
+    fecha_alta DATE NOT NULL,
+    fecha_proximo_cobro DATE NOT NULL,
+    precio DOUBLE NOT NULL,
+    credenciales_correo VARCHAR(60) NOT NULL,
+    credenciales_clave VARCHAR(60) NOT NULL,
+    suscripcion_activa BOOLEAN DEFAULT 1 NOT NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE personas(
-	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	correo VARCHAR(60) UNIQUE DEFAULT NULL,
-	nombre VARCHAR(30) DEFAULT NULL,
-    clave VARCHAR(60) DEFAULT NULL,
-	telefono VARCHAR(20) DEFAULT NULL
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
+	correo VARCHAR(60) UNIQUE NOT NULL,
+	nombre VARCHAR(30) NOT NULL,
+    clave VARCHAR(60) NOT NULL,
+	telefono VARCHAR(20) NOT NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE grupos(
-	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	id_persona INT,
-    FOREIGN KEY (id_persona) REFERENCES personas(id),
-    id_suscripcion INT,
-	FOREIGN KEY (id_suscripcion) REFERENCES suscripciones(id),
-	grupo_activo BOOLEAN DEFAULT 0,
-    admin BOOLEAN DEFAULT 0
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
+	id_persona INT UNSIGNED,
+    FOREIGN KEY (id_persona) REFERENCES personas(id) ON DELETE CASCADE,
+    id_suscripcion INT UNSIGNED,
+	FOREIGN KEY (id_suscripcion) REFERENCES suscripciones(id) ON DELETE CASCADE,
+	grupo_activo BOOLEAN DEFAULT 0 NOT NULL,
+    admin BOOLEAN DEFAULT 0 NOT NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE recibos(
-	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	id_grupo INT,
-    FOREIGN KEY (id_grupo) REFERENCES grupos(id),
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
+	id_grupo INT UNSIGNED,
+	-- ON DELETE CASCADE utilizado para arreglar no se qué de un "foreign key constraint".
+	-- ON UPDATE CASCADE era otra opción; pero no sirvió aquí.
+    FOREIGN KEY (id_grupo) REFERENCES grupos(id) ON DELETE CASCADE,
     fecha_emision DATE DEFAULT NULL,
     fecha_cobro DATE DEFAULT NULL,
     vigencia_inicio DATE DEFAULT NULL,
     vigencia_fin DATE DEFAULT NULL,
-    cobrado BOOLEAN DEFAULT 0,
+    cobrado BOOLEAN DEFAULT 0 NOT NULL,
     importe DOUBLE DEFAULT NULL,
-    recibo_activo BOOLEAN DEFAULT 1
+    recibo_activo BOOLEAN DEFAULT 1 NOT NULL
 ) ENGINE=InnoDB;
 
 INSERT INTO personas(correo, nombre, clave, telefono) VALUES
 #('admin@gmail.com', 'Admin', '12345', '096541789');
-('ramon@gmail.com', 'Ramón', 'gestiplatform', '836287498');
+('daniela@mail.com', 'Daniela', 'gestiplatform', '836287498');
 
 
 INSERT INTO personas(correo, nombre, clave, telefono) VALUES
-('martina@hotmail.com', 'Marta', '54321', '062683578'),
-('jorge@gmail.com', 'Jorge', 'ABCDE','945245678'),
-('rafa@bizkaia.eu','Rafa', 'EDCBA','660986482'),
-('manolo@hotmail.com', 'Manolo', 'A1B2C3','6604850328'),
-('salva@gmail.com', 'Salva', '3C2B1A','656565656'),
-('martina@yahoo.com', 'Martina', '?.#-AaB4','656565653'),
+('erica@mail.com', 'Erica', 'gestiplatform', '062683578'),
+('zaida@mail.com', 'Zaida', 'gestiplatform','945245678'),
+('alba@mail.com','Alba', 'gestiplatform','660986482'),
+('rebeca@mail.com', 'Rebeca', 'gestiplatform','6604850328'),
+('africa@mail.com', 'África', 'gestiplatform','656565656'),
+('alejandra@mail.com', 'Alejandra', 'gestiplatform','656565653'),
 ('david@gestiplatform.es', 'Dyrolvaid', 'whileymedio', '827462096'),
 ('gerardo@gestiplatform.eu', 'Gerardo', 'animojefa', '927539490'),
 ('nuria@gestiplatform.com', 'Nuria', 'gobiernodeldato', '203763864'),
-('isabella@mail.com', 'Isabella', 'isabella', '027429476');
+('isabella@mail.com', 'Isabella', 'gestiplatform', '027429476');
 
 INSERT INTO plataformas(nombre, url_general, url_admin, logo, limite_perfiles, limite_reproducciones, color) VALUES
 ('Netflix', 'www.netflix.com', 'www.netflix.com/es/login', 'assets/img/netflix.png', 5, 4, '#ff0000'),
