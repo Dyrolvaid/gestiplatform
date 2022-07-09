@@ -81,7 +81,7 @@ INSERT INTO personas(correo, nombre, clave, telefono) VALUES
 
 
 INSERT INTO personas(correo, nombre, clave, telefono) VALUES
-('erica@mail.com', 'Erica', 'gestiplatform', '062683578'),
+('erica@mail.com', 'Erica', 'gestiplatform', '626835780'),
 ('zaida@mail.com', 'Zaida', 'gestiplatform','945245678'),
 ('alba@mail.com','Alba', 'gestiplatform','660986482'),
 ('rebeca@mail.com', 'Rebeca', 'gestiplatform','6604850328'),
@@ -89,8 +89,8 @@ INSERT INTO personas(correo, nombre, clave, telefono) VALUES
 ('alejandra@mail.com', 'Alejandra', 'gestiplatform','656565653'),
 ('david@gestiplatform.es', 'Dyrolvaid', 'whileymedio', '827462096'),
 ('gerardo@gestiplatform.eu', 'Gerardo', 'animojefa', '927539490'),
-('nuria@gestiplatform.com', 'Nuria', 'gobiernodeldato', '203763864'),
-('isabella@mail.com', 'Isabella', 'gestiplatform', '027429476');
+('nuria@gestiplatform.com', 'Nuria', 'gobiernodeldato', '763864203'),
+('isabella@mail.com', 'Isabella', 'gestiplatform', '742947602');
 
 INSERT INTO plataformas(nombre, url_general, url_admin, logo, limite_perfiles, limite_reproducciones, color) VALUES
 ('Netflix', 'www.netflix.com', 'www.netflix.com/es/login', 'assets/img/netflix.png', 5, 4, '#ff0000'),
