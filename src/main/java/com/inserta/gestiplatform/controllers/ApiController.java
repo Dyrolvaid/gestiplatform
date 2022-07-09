@@ -144,6 +144,11 @@ public class ApiController {
         Grupo grupoFiltrar = gruposRepo.findById(idGrupo).orElse(null);
         return recibosRepo.findByGrupo(grupoFiltrar);
     }
+    @RequestMapping("/plataformas/{id}")
+    public Plataforma plataformaById(@PathVariable Integer id) {
+        return plataformasRepo.findById(id).orElse(null);
+    }
+
 
     //Puede parecer que no, pero los siguientes dos métodos hacen lo que se espera de ellos.
     @RequestMapping("/recibos/suscripcion/{idSuscripcion}")
