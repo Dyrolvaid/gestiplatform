@@ -176,85 +176,92 @@ public class ApiController {
 
     //TODOS LOS POST DE V1 AQUÍ ABAJO
     @PostMapping(path = "/grupos", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Object> respuestaGrupo(@RequestBody Grupo grupo) {
+    public /*ResponseEntity<Object>*/ /*Grupo*/ void respuestaGrupo(@RequestBody Grupo grupo) {
         Grupo grupoConUltimaId = gruposRepo.findTopByOrderByIdDesc();
         grupo.setId(grupoConUltimaId.getId() + 1);
         gruposRepo.save(grupo);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(grupo.getId())
-                .toUri();
-        return ResponseEntity.created(location).build();
+//        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+//                .path("/{id}")
+//                .buildAndExpand(grupo.getId())
+//                .toUri();
+//        return ResponseEntity.created(location).build();
+//        return grupo;
     }
     @PostMapping(path = "/suscripciones", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Object> respuestaSuscripcion(@RequestBody Suscripcion suscripcion) {
+    public /*ResponseEntity<Object>*/ /*Suscripcion*/ void respuestaSuscripcion(@RequestBody Suscripcion suscripcion) {
         Suscripcion suscripcionConUltimaId = suscripcionesRepo.findTopByOrderByIdDesc();
         suscripcion.setId(suscripcionConUltimaId.getId() + 1);
         suscripcionesRepo.save(suscripcion);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(suscripcion.getId())
-                .toUri();
-        return ResponseEntity.created(location).build();
+//        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+//                .path("/{id}")
+//                .buildAndExpand(suscripcion.getId())
+//                .toUri();
+//        return ResponseEntity.created(location).build();
+//        return suscripcion;
     }
 
     @PostMapping(path = "/recibos", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Object> respuestaRecibo(@RequestBody Recibo recibo) {
+    public /*ResponseEntity<Object>*/ /*Recibo*/ void respuestaRecibo(@RequestBody Recibo recibo) {
         Recibo reciboConUltimaId = recibosRepo.findTopByOrderByIdDesc();
         recibo.setId(reciboConUltimaId.getId() + 1);
         recibosRepo.save(recibo);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(recibo.getId())
-                .toUri();
-        return ResponseEntity.created(location).build();
+//        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+//                .path("/{id}")
+//                .buildAndExpand(recibo.getId())
+//                .toUri();
+//        return ResponseEntity.created(location).build();
+//        return recibo;
     }
 
     @PostMapping(path = "/personas", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Object> respuestaPersona(@RequestBody Persona persona) {
+    public /*ResponseEntity<Object>*/ /*Persona*/ void respuestaPersona(@RequestBody Persona persona) {
         Persona personaConUltimaId = personasRepo.findTopByOrderByIdDesc();
         persona.setId(personaConUltimaId.getId() + 1);
         personasRepo.save(persona);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(persona.getId())
-                .toUri();
-        return ResponseEntity.created(location).build();
+//        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+//                .path("/{id}")
+//                .buildAndExpand(persona.getId())
+//                .toUri();
+//        return ResponseEntity.created(location).build();
+//        return persona;
     }
 
     @PostMapping(path = "/periodicidades", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Object> respuestaPeriodicidad(@RequestBody Periodicidad periodicidad) {
+    public /*ResponseEntity<Object>*/ /*Periodicidad*/ void respuestaPeriodicidad(@RequestBody Periodicidad periodicidad) {
         Periodicidad periodicidadConUltimaId = periodicidadesRepo.findTopByOrderByIdDesc();
         periodicidad.setId(periodicidadConUltimaId.getId() + 1);
         periodicidadesRepo.save(periodicidad);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(periodicidad.getId())
-                .toUri();
-        return ResponseEntity.created(location).build();
+//        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+//                .path("/{id}")
+//                .buildAndExpand(periodicidad.getId())
+//                .toUri();
+//        return ResponseEntity.created(location).build();
+//        return periodicidad;
     }
 
     @PostMapping(path = "/plataformas", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Object> respuestaPlataforma(@RequestBody Plataforma plataforma) {
+    public /*ResponseEntity<Object>*/ /*Plataforma*/ void respuestaPlataforma(@RequestBody Plataforma plataforma) {
         Plataforma plataformaConUltimaId = plataformasRepo.findTopByOrderByIdDesc();
         plataforma.setId(plataformaConUltimaId.getId() + 1);
         plataformasRepo.save(plataforma);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(plataforma.getId())
-                .toUri();
-        return ResponseEntity.created(location).build();
+//        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+//                .path("/{id}")
+//                .buildAndExpand(plataforma.getId())
+//                .toUri();
+//        return ResponseEntity.created(location).build();
+//        return plataforma;
     }
 
     @PostMapping(path = "/formasdepago", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Object> respuestaFormaDePago(@RequestBody FormaDePago formaDePago) {
+    public /*ResponseEntity<Object>*/ /*FormaDePago*/ void respuestaFormaDePago(@RequestBody FormaDePago formaDePago) {
         FormaDePago formaDePagoConUltimaId = formasDePagoRepo.findTopByOrderByIdDesc();
         formaDePago.setId(formaDePagoConUltimaId.getId() + 1);
         formasDePagoRepo.save(formaDePago);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(formaDePago.getId())
-                .toUri();
-        return ResponseEntity.created(location).build();
+//        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+//                .path("/{id}")
+//                .buildAndExpand(formaDePago.getId())
+//                .toUri();
+//        return ResponseEntity.created(location).build();
+//        return formaDePago;
     }
 }

@@ -100,7 +100,7 @@ INSERT INTO plataformas(nombre, url_general, url_admin, logo, limite_perfiles, l
 ('Movistar', 'www.movistar.es', 'www.movistar.es', 'assets/img/movistar.png', 3, 2, '#0dff00'),
 ('Fubo Tv', 'www.fubo.tv', 'www.fubo.tv', 'assets/img/fubo.png', 6, 3, '#000000'),
 ('Prime Video', 'www.primevideo.com', 'www.primevideo.com', 'assets/img/prime.png', 5, 4, '#ffffff'),
-('Inserta Full-Stack 2022', 'https://insertaonce.arelance.com/', 'https://insertaonce.arelance.com/login/index.php', 'assets/img/inserta.png', 3, 3, '#814187');
+('Full-Stack 2022', 'https://insertaonce.arelance.com/', 'https://insertaonce.arelance.com/login/index.php', 'assets/img/inserta.png', 3, 3, '#814187');
 
 INSERT INTO periodicidad(tipo, descripcion) VALUES
 ('Mensual','Cada mes'),
