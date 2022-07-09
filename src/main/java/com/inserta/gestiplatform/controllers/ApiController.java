@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 //@CrossOrigin(origins = "http://localhost:4200")
@@ -261,4 +262,16 @@ public class ApiController {
 //        return ResponseEntity.created(location).build();
 //        return formaDePago;
     }
+    @PatchMapping(path ="/recibos", consumes = "application/json", produces = "application/json")
+    public void actualizarRecibo(@RequestBody Recibo datosACambiarRecibo) {
+        Recibo recibo = recibosRepo.findById(datosACambiarRecibo.getId()).orElse(null);
+        if (recibo != null) {
+            recibo.setReciboActivo(datosACambiarRecibo.isReciboActivo());
+            recibo.setCobrado(datosACambiarRecibo.isCobrado());
+            recibo.setFechaCobro(datosACambiarRecibo.getFechaCobro());
+            recibo.setImporte(datosACambiarRecibo.getImporte());
+            recibosRepo.save(recibo);
+        }
+    }
 }
+
