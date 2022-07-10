@@ -3,6 +3,7 @@ package com.inserta.gestiplatform.models;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 
 @Entity
@@ -18,6 +19,7 @@ public class Plataforma {
     private int limitePerfiles;
     private int limiteReproducciones;
     private String color;
+
     /*
     @JsonIgnoreProperties("plataforma")
     @OneToMany(mappedBy = "plataforma")
@@ -25,6 +27,17 @@ public class Plataforma {
     */
 
     public Plataforma() {
+    }
+
+    public Plataforma(Integer id, String nombre, String urlGeneral, String urlAdmin, String logo, int limitePerfiles, int limiteReproducciones, String color) {
+        this.id = id;
+        this.nombre = nombre;
+        this.urlGeneral = urlGeneral;
+        this.urlAdmin = urlAdmin;
+        this.logo = logo;
+        this.limitePerfiles = limitePerfiles;
+        this.limiteReproducciones = limiteReproducciones;
+        this.color = color;
     }
 
     public Integer getId() {

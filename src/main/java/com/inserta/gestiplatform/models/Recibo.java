@@ -2,6 +2,10 @@ package com.inserta.gestiplatform.models;
 
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -15,7 +19,7 @@ public class Recibo {
     private Integer id;
 
 //    @JsonIgnoreProperties("recibos")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_grupo", referencedColumnName = "id")
     private Grupo grupo;
 

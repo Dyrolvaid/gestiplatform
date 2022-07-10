@@ -3,6 +3,7 @@ package com.inserta.gestiplatform.models;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 
 @Entity
@@ -20,6 +21,12 @@ public class Periodicidad {
     */
 
     public Periodicidad() {
+    }
+
+    public Periodicidad(Integer id, String tipo, String descripcion) {
+        this.id = id;
+        this.tipo = tipo;
+        this.descripcion = descripcion;
     }
 
     public Integer getId() {

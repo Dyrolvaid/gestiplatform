@@ -2,6 +2,7 @@ package com.inserta.gestiplatform.models;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "formas_pago")

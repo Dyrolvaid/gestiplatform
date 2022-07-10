@@ -4,7 +4,9 @@ package com.inserta.gestiplatform.models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 
 @Entity
@@ -38,6 +40,20 @@ public class Suscripcion {
     */
 
     public Suscripcion() {
+    }
+
+    public Suscripcion(Integer id, Plataforma plataforma, Periodicidad periodicidad, FormaDePago formaDePago, String descripcion, LocalDate fechaAlta, LocalDate fechaProximoCobro, double precio, String credencialesCorreo, String credencialesClave, boolean suscripcionActiva) {
+        this.id = id;
+        this.plataforma = plataforma;
+        this.periodicidad = periodicidad;
+        this.formaDePago = formaDePago;
+        this.descripcion = descripcion;
+        this.fechaAlta = fechaAlta;
+        this.fechaProximoCobro = fechaProximoCobro;
+        this.precio = precio;
+        this.credencialesCorreo = credencialesCorreo;
+        this.credencialesClave = credencialesClave;
+        this.suscripcionActiva = suscripcionActiva;
     }
 
     public Integer getId() {

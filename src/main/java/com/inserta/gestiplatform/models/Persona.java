@@ -3,6 +3,7 @@ package com.inserta.gestiplatform.models;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 
 @Entity
@@ -15,6 +16,7 @@ public class Persona {
     private String nombre;
     private String clave;
     private String telefono;
+
     /*
     @JsonIgnoreProperties("persona")
     @OneToMany(mappedBy = "persona")

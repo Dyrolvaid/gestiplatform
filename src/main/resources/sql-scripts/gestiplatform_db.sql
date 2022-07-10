@@ -28,11 +28,11 @@ CREATE TABLE formas_pago(
 CREATE TABLE suscripciones(
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
     id_plataforma INT UNSIGNED,
-    FOREIGN KEY (id_plataforma) REFERENCES plataformas(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_plataforma) REFERENCES plataformas(id),
     id_periodicidad INT UNSIGNED,
-	FOREIGN KEY (id_periodicidad) REFERENCES periodicidad(id) ON DELETE CASCADE,
+	FOREIGN KEY (id_periodicidad) REFERENCES periodicidad(id),
     id_forma_de_pago INT UNSIGNED,
-	FOREIGN KEY (id_forma_de_pago) REFERENCES formas_pago(id) ON DELETE CASCADE,
+	FOREIGN KEY (id_forma_de_pago) REFERENCES formas_pago(id),
     descripcion VARCHAR(255) NOT NULL,
     fecha_alta DATE NOT NULL,
     fecha_proximo_cobro DATE NOT NULL,
@@ -53,9 +53,9 @@ CREATE TABLE personas(
 CREATE TABLE grupos(
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
 	id_persona INT UNSIGNED,
-    FOREIGN KEY (id_persona) REFERENCES personas(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_persona) REFERENCES personas(id),
     id_suscripcion INT UNSIGNED,
-	FOREIGN KEY (id_suscripcion) REFERENCES suscripciones(id) ON DELETE CASCADE,
+	FOREIGN KEY (id_suscripcion) REFERENCES suscripciones(id),
 	grupo_activo BOOLEAN DEFAULT 0 NOT NULL,
     admin BOOLEAN DEFAULT 0 NOT NULL
 ) ENGINE=InnoDB;

@@ -4,9 +4,12 @@ package com.inserta.gestiplatform.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 
@@ -20,13 +23,13 @@ public class Grupo {
     /*
     @JsonIgnoreProperties("grupos")
     */
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_persona",referencedColumnName = "id")
     private Persona persona;
     /*
     @JsonIgnoreProperties("grupos")
     */
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_suscripcion",referencedColumnName = "id")
     private Suscripcion suscripcion;
 
@@ -41,6 +44,14 @@ public class Grupo {
     */
 
     public Grupo() {
+    }
+
+    public Grupo(Integer id, Persona persona, Suscripcion suscripcion, boolean grupoActivo, boolean admin) {
+        this.id = id;
+        this.persona = persona;
+        this.suscripcion = suscripcion;
+        this.grupoActivo = grupoActivo;
+        this.admin = admin;
     }
 
     public Integer getId() {
